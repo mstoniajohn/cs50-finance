@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+        <tr>
+        <th>Symbol</th>
+        <th>Share</th>
+         <th>Price</th>
+         <th>Time Posted</th>
+
+        </tr>
+
+    </thead>
+
+    <tfoot>
+        <tr>
+            <td colspan="4">Total</td>
+            <td>{{grand_total}}</td>
+        </tr>
+    </tfoot>
+     <tbody>
+         {% for transaction in transactions %}
+
+        <tr>
+            <td>{{ transaction["symbol"] }}</td>
+            <td>{{ transaction["shares"] }}</td>
+            <td>{{ transaction["price"] }}</td>
+            <td>{{ transaction["time_posted"] }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td style="margin-left:0;" colspan="4">Total Cash:</td>
+            <td> {{ cash }}</td>
+        </tr>
+    </tbody>
+</table>
+
+{{cash}}
+{% endblock %}
